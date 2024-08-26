@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proxy</title>
+    <style>
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<iframe id='proxFrame' src="/static/" style="position:fixed; top:0; left:0; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+    Your browser doesn't support iframes
+</iframe>
+
+<script>
+    function checkIframe() {
+        const iframe = document.getElementById('proxFrame');
+        
+        // Create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+        
+        // Set up a GET request for the iframe src
+        xhr.open('GET', iframe.src, true);
+        
+        // Define a callback function to handle the response
+        xhr.onload = function() {
+            if (xhr.status === 404) {
+                // Reload the iframe if a 404 status is returned
+                document.getElementById('proxFrame').contentWindow.location.reload();
+            }
+        };
+        
+        // Send the request
+        xhr.send();
+    }
+
+    // Check the iframe every 5 seconds
+    setInterval(checkIframe, 5000);
+</script>
+
+</body>
+</html>
