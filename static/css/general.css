@@ -23,4 +23,6 @@ form{
 .credits{
  position: absolute;
   bottom: 10px;
+  left: %50;
+  right: %50;
 }
