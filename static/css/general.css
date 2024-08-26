@@ -15,3 +15,8 @@ form{
   text-size: 35px;
   text-align: center;
 }
+.searchbartext {
+    top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
